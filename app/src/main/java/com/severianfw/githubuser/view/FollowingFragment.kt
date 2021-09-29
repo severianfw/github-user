@@ -1,11 +1,11 @@
 package com.severianfw.githubuser.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,9 +29,7 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username = arguments?.getString("username", "")
-        Log.e("TEST", "masuk onCreatedView")
         if (username != null) {
-            Log.e("TEST", username)
             userViewModel.getFollowing(username)
         }
 
@@ -43,5 +41,15 @@ class FollowingFragment : Fragment() {
             rvFollowing.adapter = FollowListAdapter(it)
         })
 
+        userViewModel.isTabLoading.observe(viewLifecycleOwner, {
+            val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
+            if (it) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+            }
+        })
     }
+
 }
+

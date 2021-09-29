@@ -16,6 +16,9 @@ class UserViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isTabLoading = MutableLiveData<Boolean>()
+    val isTabLoading: LiveData<Boolean> = _isTabLoading
+
     private val _user = MutableLiveData<UserDetailResponse>()
     val user: LiveData<UserDetailResponse> = _user
 
@@ -75,14 +78,14 @@ class UserViewModel : ViewModel() {
     }
 
     fun getFollowers(username: String) {
-        _isLoading.value = true
+        _isTabLoading.value = true
         val client = ApiConfig.getApiService().getFollowers(username)
         client.enqueue(object : Callback<List<UserItem>> {
             override fun onResponse(
                 call: Call<List<UserItem>>,
                 response: Response<List<UserItem>>
             ) {
-                _isLoading.value = false
+                _isTabLoading.value = false
                 _followerList.value = response.body()
                 Log.e(TAG, followerList.value.toString())
                 Log.e(TAG, "masuk getFollowers")
@@ -96,14 +99,14 @@ class UserViewModel : ViewModel() {
     }
 
     fun getFollowing(username: String) {
-        _isLoading.value = true
+        _isTabLoading.value = true
         val client = ApiConfig.getApiService().getFollowing(username)
         client.enqueue(object : Callback<List<UserItem>> {
             override fun onResponse(
                 call: Call<List<UserItem>>,
                 response: Response<List<UserItem>>
             ) {
-                _isLoading.value = false
+                _isTabLoading.value = false
                 _followingList.value = response.body()
                 Log.e(TAG, "masuk getFollowing")
             }
