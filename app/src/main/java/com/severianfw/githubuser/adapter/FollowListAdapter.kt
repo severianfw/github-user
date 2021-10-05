@@ -1,37 +1,32 @@
 package com.severianfw.githubuser.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.severianfw.githubuser.R
+import com.severianfw.githubuser.databinding.ItemUserBinding
 import com.severianfw.githubuser.model.UserItem
 
 class FollowListAdapter(private val listUser: List<UserItem>) :
     RecyclerView.Adapter<FollowListAdapter.ListViewHolder>() {
 
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvUsername: TextView = itemView.findViewById(R.id.tv_username)
-        private val tvUrl: TextView = itemView.findViewById(R.id.tv_html_url)
-        private val ivAvatar: ImageView = itemView.findViewById(R.id.iv_avatar)
+    inner class ListViewHolder(private val itemUserBinding: ItemUserBinding) : RecyclerView.ViewHolder(itemUserBinding.root) {
 
         fun bind(user: UserItem) {
-            Glide.with(itemView)
+            Glide.with(itemUserBinding.root)
                 .load(user.avatarUrl)
-                .into(ivAvatar)
+                .into(itemUserBinding.ivAvatar)
 
-            tvUsername.text = user.login
-            tvUrl.text = user.htmlUrl
+            itemUserBinding.apply {
+                tvUsername.text = user.login
+                tvHtmlUrl.text = user.htmlUrl
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
-        return ListViewHolder(view)
+        val itemUserBinding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(itemUserBinding)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
@@ -40,6 +35,5 @@ class FollowListAdapter(private val listUser: List<UserItem>) :
     }
 
     override fun getItemCount(): Int = listUser.size
-
 
 }

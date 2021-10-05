@@ -1,6 +1,7 @@
 package com.severianfw.githubuser.viewmodel
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -88,7 +89,6 @@ class UserViewModel : ViewModel() {
                 _isTabLoading.value = false
                 _followerList.value = response.body()
                 Log.e(TAG, followerList.value.toString())
-                Log.e(TAG, "masuk getFollowers")
             }
 
             override fun onFailure(call: Call<List<UserItem>>, t: Throwable) {
@@ -108,7 +108,6 @@ class UserViewModel : ViewModel() {
             ) {
                 _isTabLoading.value = false
                 _followingList.value = response.body()
-                Log.e(TAG, "masuk getFollowing")
             }
 
             override fun onFailure(call: Call<List<UserItem>>, t: Throwable) {

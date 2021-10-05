@@ -5,7 +5,8 @@
     <string name="repository">Repository</string>
     <string name="github_user">Github User</string>
     <string name="search_user">Search User</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="favorite_buttom">Favorite Buttom</string>
 
 </resources>

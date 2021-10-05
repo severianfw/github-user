@@ -3,15 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2972222222222222" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable/ic_delete.xml" value="0.3" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable/ic_favorite_red.xml" value="0.3" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable/ic_favorite_white.xml" value="0.3" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable/item_bg.xml" value="0.3651041666666667" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/drawable/search_bar_bg.xml" value="0.25555555555555554" />
-        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_detail.xml" value="0.22" />
-        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_favorite.xml" value="0.23731884057971014" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/activity_splash.xml" value="0.21739130434782608" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/fragment_follower.xml" value="0.25" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/fragment_following.xml" value="0.20380434782608695" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/item_bg.xml" value="0.3489583333333333" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/item_fav_user.xml" value="0.25" />
         <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/item_row_user.xml" value="0.33" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/layout/item_user.xml" value="0.22010869565217392" />
+        <entry key="..\:/Training/Android/GithubUser/app/src/main/res/menu/menu_item.xml" value="0.25677083333333334" />
       </map>
     </option>
   </component>

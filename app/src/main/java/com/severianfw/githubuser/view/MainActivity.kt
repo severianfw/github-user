@@ -3,10 +3,13 @@ package com.severianfw.githubuser.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.severianfw.githubuser.R
 import com.severianfw.githubuser.adapter.UserListAdapter
 import com.severianfw.githubuser.databinding.ActivityMainBinding
 import com.severianfw.githubuser.model.UserItem
@@ -23,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Github User Search"
 
-        mainBinding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        mainBinding.userSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return if (query != null) {
                     userViewModel.getUserList(query)
@@ -68,5 +71,18 @@ class MainActivity : AppCompatActivity() {
         } else {
             mainBinding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_item, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.ic_settings -> startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.ic_favourite -> startActivity(Intent(this, FavoriteActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

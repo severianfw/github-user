@@ -1,25 +1,31 @@
 package com.severianfw.githubuser.view
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.severianfw.githubuser.R
 import com.severianfw.githubuser.database.SettingPreferences
+import com.severianfw.githubuser.databinding.ActivitySettingsBinding
 import com.severianfw.githubuser.viewmodel.SettingsViewModel
 
-class SplashActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity() {
 
+    private lateinit var settingsBinding: ActivitySettingsBinding
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+
+        settingsBinding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(settingsBinding.root)
+
+        supportActionBar?.apply {
+            title = "Settings"
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         val pref = SettingPreferences.getInstance(dataStore)
         val settingViewModel = SettingsViewModel(pref)
@@ -27,15 +33,20 @@ class SplashActivity : AppCompatActivity() {
         settingViewModel.getThemeSettings().observe(this, {
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                settingsBinding.switchTheme.isChecked = true
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                settingsBinding.switchTheme.isChecked = false
             }
         })
 
-        Handler().postDelayed(Runnable {
-            val intent = Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 2000)
+        settingsBinding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            settingViewModel.saveThemeSetting(isChecked)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
