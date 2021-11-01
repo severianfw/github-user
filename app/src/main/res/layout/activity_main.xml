@@ -22,11 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:queryBackground="@android:color/transparent"
         app:queryHint="@string/search_user">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/search_user" />
     </SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
